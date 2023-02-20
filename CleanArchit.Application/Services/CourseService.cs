@@ -4,7 +4,7 @@ using CleanArchit.Domain.Intarfaces;
 
 namespace CleanArchit.Application.Services
 {
-    internal class CourseService : ICourseService
+    public class CourseService : ICourseService
     {
         private ICourseRepository _courseRepository;
         public CourseService(ICourseRepository courseRepository) 

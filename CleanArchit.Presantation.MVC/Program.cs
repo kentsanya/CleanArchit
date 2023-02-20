@@ -2,6 +2,7 @@ using CleanArchit.Presantation.MVC.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CleanArchit.Infrastructure.Data.Context;
+using CleanArchit.Infrastructure.IoC;
 
 namespace CleanArchit.Presantation.MVC
 {
@@ -23,7 +24,7 @@ namespace CleanArchit.Presantation.MVC
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
-
+            RegisterServices(builder.Services);
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -52,6 +53,10 @@ namespace CleanArchit.Presantation.MVC
             app.MapRazorPages();
 
             app.Run();
+        }
+        private static void RegisterServices(IServiceCollection services) 
+        {
+            DependencyContainer.RegisterServices(services);
         }
     }
 }
