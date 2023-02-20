@@ -9,6 +9,7 @@ namespace CleanArchit.Infrastructure.Data.Repository
         private CourseDBContext _context;
         public CourseRepository(CourseDBContext context) 
         {
+            
             _context = context;
         }
         public IEnumerable<Course> GetCourses()

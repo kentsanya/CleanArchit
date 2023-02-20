@@ -18,7 +18,7 @@ namespace CleanArchit.Presantation.MVC
                 options.UseSqlServer(connectionString));
             var connectionStringDbCourse = builder.Configuration.GetConnectionString("CourseConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CourseDBContext>(options =>
-          options.UseSqlServer(connectionString));
+          options.UseSqlServer(connectionStringDbCourse));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

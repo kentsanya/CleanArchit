@@ -1,4 +1,6 @@
-﻿using CleanArchit.Presantation.MVC.Models;
+﻿using CleanArchit.Application.Interfases;
+using CleanArchit.Infrastructure.Data.Context;
+using CleanArchit.Presantation.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,15 +9,18 @@ namespace CleanArchit.Presantation.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICourseService _courseService;
+      
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ICourseService courseService)
         {
+            _courseService= courseService;
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_courseService.GetViewCourse());
         }
 
         public IActionResult Privacy()
