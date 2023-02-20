@@ -2,12 +2,12 @@
 
 namespace CleanArchit.Domain.Models
 {
-    internal class Course
+    public class Course
     {
-        internal int Id { get; set; }
-        internal string Name { get; set; }
-        internal string Description { get; set; }
-        internal string Author { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Author { get; set; }
 
     }
 }
