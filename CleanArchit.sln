@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33403.182
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{5DF101CD-B4C1-4FFA-A889-C7DE62D265CD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{B7F57DF6-68EF-40C5-93E1-03EDDD286816}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{15FD99FD-65AC-4B02-BB8C-33124ADA7927}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{58FD46DE-6D05-4935-83F9-069AA872FB6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoC", "IoC", "{A4B95955-63AC-4099-B228-8E7C90B8E83A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{68AF689A-3249-4CC9-8CF1-F82F79B84BB3}"
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58FD46DE-6D05-4935-83F9-069AA872FB6D} = {15FD99FD-65AC-4B02-BB8C-33124ADA7927}
+		{A4B95955-63AC-4099-B228-8E7C90B8E83A} = {15FD99FD-65AC-4B02-BB8C-33124ADA7927}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F60E611A-6D2D-4CC8-A6BC-AF71E41A277C}
+	EndGlobalSection
+EndGlobal
