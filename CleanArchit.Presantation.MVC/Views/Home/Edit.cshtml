@@ -1,0 +1,22 @@
+﻿@model CourseViewModel
+@{
+    ViewData["Title"] = "Edit Course";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @using (Html.BeginForm("Privacy", "Home", FormMethod.Post))
+    {
+        @Html.ValidationSummary()
+        <p>
+            @Html.DisplayFor(m=>m.Name,"Input name course")
+            @Html.EditorFor(m=>m.Name)
+        </p>
+        <p>
+            @Html.DisplayFor(m=>m.Description,"Input detali of course")
+            @Html.EditorFor(m=>m.Description)
+
+        </p>
+        <input type="submit" value="Enter" />
+    }
+</div>

@@ -18,12 +18,15 @@ namespace CleanArchit.Presantation.MVC
                 options.UseSqlServer(connectionString));
             var connectionStringDbCourse = builder.Configuration.GetConnectionString("CourseConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CourseDBContext>(options =>
-          options.UseSqlServer(connectionStringDbCourse));
+                options.UseSqlServer(connectionStringDbCourse));
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             builder.Services.AddControllersWithViews();
+
             RegisterServices(builder.Services);
             var app = builder.Build();
 
@@ -50,11 +53,12 @@ namespace CleanArchit.Presantation.MVC
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
             app.MapRazorPages();
 
             app.Run();
         }
-        private static void RegisterServices(IServiceCollection services) 
+        private static void RegisterServices(IServiceCollection services)
         {
             DependencyContainer.RegisterServices(services);
         }

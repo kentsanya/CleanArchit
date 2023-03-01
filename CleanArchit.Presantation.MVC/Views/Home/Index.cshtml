@@ -1,13 +1,17 @@
-﻿@using CleanArchit.Application.ViewModels;
-@model ViewCourseModel
+﻿@using CleanArchit.Application.Interfases;
+
+@inject ICourseService course
+
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
+    @ViewBag.Courses=course.GetViewCourse()
+
     <h1 class="display-4">List of Courses</h1>
     <ul>
-        @foreach(var item in Model.Courses)
+        @foreach(var item in ViewBag.Courses)
         {
             <li>@item.Name</li
             <li>@item.Author</li>

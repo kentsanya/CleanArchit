@@ -1,11 +1,15 @@
 ﻿using CleanArchit.Application.Interfases;
-using CleanArchit.Infrastructure.Data.Context;
 using CleanArchit.Presantation.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.Data.SqlClient.DataClassification;
+using System.Collections;
 using System.Diagnostics;
 
 namespace CleanArchit.Presantation.MVC.Controllers
 {
+
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,15 +22,28 @@ namespace CleanArchit.Presantation.MVC.Controllers
             _logger = logger;
         }
 
+     
         public IActionResult Index()
         {
             return View(_courseService.GetViewCourse());
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult CreateCourse()
         {
             return View();
         }
+
+        [HttpPost]
+        public  IActionResult CreateCourse(CourseViewModel course)
+        {
+            
+            
+            return View(course);
+
+        }
+      
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
