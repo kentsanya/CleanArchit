@@ -2,10 +2,8 @@
 
 namespace CleanArchit.Domain.Intarfaces
 {
-    public interface ICourseRepository
+    public interface ICourseRepository:IRepository<Course>
     {
-        IEnumerable<Course> GetCourses();
-
        
     }
 }

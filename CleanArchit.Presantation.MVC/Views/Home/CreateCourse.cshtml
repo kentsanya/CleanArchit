@@ -1,23 +1,27 @@
-﻿@model CourseViewModel
+﻿@using CleanArchit.Domain.Models
+
+@model Course
 @{
     ViewData["Title"] = "Create Course";
 }
 <h1>@ViewData["Title"]</h1>
 
-<div>
-    @using (Html.BeginForm("Privacy", "Home", FormMethod.Post))
-    {
-        @Html.ValidationSummary()
-        @Html.HiddenFor(m=>m.Id,1);
-        <p>
-            @Html.LabelFor(m=>m.Name,"Input name course")
-            @Html.TextBoxFor(m=>m.Name)
-        </p>
-        <p>
-            @Html.Label("Description","Input detali of course")
-            @Html.TextBox("Description","", new {type="text"})
-         
-        </p>
-        <input type="submit" value="Enter" />
-    }
+<div class="container-md">
+    <form>
+        <div>
+            <label asp-for="Name"></label>
+            <input type="text" asp-for="Name" />
+        </div>
+        <div >
+            <label asp-for="Author"></label>
+            <input type="text" asp-for="Author" />
+        </div>
+        <div>
+            <label asp-for="Description"></label>
+            <input type="text" asp-for="Description" />
+        </div>
+        <div>
+            <input type="submit" value="Save"/>
+        </div>
+    </form>
 </div>

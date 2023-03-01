@@ -1,21 +1,38 @@
-﻿@using CleanArchit.Application.Interfases;
-
-@inject ICourseService course
+﻿@addTagHelper *, CleanArchit.Presantation.MVC.TagHelpers
+@using CleanArchit.Application.ViewModels;
+@model ViewCourseModel
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    @ViewBag.Courses=course.GetViewCourse()
 
+<div>
+    <list viewcoursemodel="@Model"></list>
+</div>
+
+<div class="container-fluid">
     <h1 class="display-4">List of Courses</h1>
-    <ul>
-        @foreach(var item in ViewBag.Courses)
-        {
-            <li>@item.Name</li
-            <li>@item.Author</li>
-        }
-    </ul>
+    <table class="table">
+        <thead class="table-primary">
+            <tr>
+                <td>Name</td>
+                 <td>Author</td>
+                 <td>Name</td>
+                 <td>Operations</td>
+            </tr>
+        </thead>
+        <tbody class="table-info">
+        @foreach(var item in Model.Courses)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Author</td>
+                    <td>@item.Description</td>
+                    <td><a class="nav-link" asp-action="EditCourse" asp-controller="home" asp-route-id="@item.Id">Edit</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
    
 </div>
