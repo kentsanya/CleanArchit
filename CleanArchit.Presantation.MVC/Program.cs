@@ -16,9 +16,11 @@ namespace CleanArchit.Presantation.MVC
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
             var connectionStringDbCourse = builder.Configuration.GetConnectionString("CourseConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CourseDBContext>(options =>
                 options.UseSqlServer(connectionStringDbCourse));
+
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

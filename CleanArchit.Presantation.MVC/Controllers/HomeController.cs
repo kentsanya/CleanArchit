@@ -35,71 +35,7 @@ namespace CleanArchit.Presantation.MVC.Controllers
             return View(viewCourse) ;
         }
 
-        [HttpGet]
-        public IActionResult CreateCourse()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateCourse(Course course)
-        {
-            if (ModelState.IsValid)
-            {
-                _courseService.Add(course);
-                _courseService.Save();
-                return RedirectToAction("Index");
-            }else 
-            {
-                string textarea = String.Empty;
-                foreach (var item in ModelState) 
-                {
-                    if (item.Value.ValidationState==ModelValidationState.Invalid) 
-                    {
-                        textarea += item.Key;
-                        foreach (var erorr in item.Value.Errors) 
-                        {
-                            textarea += "---";
-                            textarea += erorr.ErrorMessage;
-                        }
-                    }
-
-                }
-                return BadRequest(textarea);
-            }
-
-
-        }
-
-        [HttpGet]
-        public IActionResult EditCourse(int id)
-        {
-            if (id != 0)
-            {
-                var course = _courseService.FindById(id);
-                if (course != null)
-                {
-                    return View(course);
-                }
-                else return NotFound();
-            }
-            else return NotFound();
-        }
-
-        [HttpPost]
-        public IActionResult EditCourse(Course course)
-        {
-            if (course != null)
-            {
-                if (_courseService.UpDate(course))
-                {
-                    _courseService.Save();
-                    return RedirectToAction("Index");
-                }
-                else return NotFound();
-            }
-            else return NotFound();
-        }
+      
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

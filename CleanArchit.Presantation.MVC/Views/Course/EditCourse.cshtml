@@ -1,0 +1,38 @@
+﻿@using CleanArchit.Domain.Models
+@model Course
+
+@{
+    ViewData["Title"] = "Edit Course";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="container-fluid">
+    @using (Html.BeginForm("EditCourse", "Home", FormMethod.Post))
+    {
+        <div class="row">@Html.ValidationSummary()</div>
+        <div class="row">
+            <div class="col-4">@Html.DisplayFor(m=>m.Name,"Input name of course")</div>
+            <div class="col-4">@Html.EditorFor(m=>m.Name)</div>
+        </div>
+        <div class="row">
+            <div class="col-4">@Html.DisplayFor(m=>m.Author,"Input Author of course")</div>
+            <div class="col-4">@Html.EditorFor(m=>m.Author)</div>
+        </div>
+        <div class="row">
+            <div class="col-4">@Html.DisplayFor(m=>m.Description,"Input detali of course")</div>
+            <div class="col-4">@Html.EditorFor(m=>m.Description)</div>
+
+        </div>
+        <div class="row">
+            <div class="col-4">@Html.DisplayFor(m=>m.Price,"Input price of course")</div>
+            <div class="col-4">@Html.EditorFor(m=>m.Price)</div>
+        </div>
+        <div class="row">
+            <div class="col-5"></div>
+            <div class="col-4">
+                <input class="btn btn-dark" type="submit" value="Enter" />
+            </div>
+        </div>
+       
+    }
+</div>

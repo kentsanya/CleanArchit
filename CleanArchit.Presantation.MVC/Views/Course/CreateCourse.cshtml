@@ -1,0 +1,41 @@
+﻿@using CleanArchit.Domain.Models
+
+@model Course
+@{
+    ViewData["Title"] = "Create Course";
+}
+<p class="h1 text-center">@ViewData["Title"]</p>
+
+<div class="container-fluid">
+
+    <form method="post"> 
+    <div asp-validation-summary="ModelOnly"/>
+        <div class="flex">
+            <label class="form-label" asp-for="Name"></label>
+            <input class="form-control" type="text" data-val="true" data-val-required="The name field is required" asp-for="Name" />
+            <span  class="valid_danger" asp-validation-for="Name"></span>
+        </div>
+        <div  class="flex">
+            <label class="form-label" asp-for="Author"></label>
+            <input class="form-control" type="text" asp-for="Author" />
+            <span class="valid_danger" asp-validation-for="Author"></span>
+        </div>
+        <div class="flex">
+            <label class="form-label" asp-for="Description"></label>
+            <input class="form-control" type="text" asp-for="Description" />
+            <span class="valid_danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="flex">
+            <label class="form-label" asp-for="Price"></label>
+            <input class="form-control" type="number" asp-for="Price" />
+            <span class="valid_danger" asp-validation-for="Price"></span>
+        </div>
+        <div class="d-inline-flex">
+            <input class="btn btn-primary" type="submit" value="Save"/>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

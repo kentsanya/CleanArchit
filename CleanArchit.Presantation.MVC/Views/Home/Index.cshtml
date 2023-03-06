@@ -7,14 +7,15 @@
 
 
 <div class="container-fluid">
-    <h1 class="display-4">List of Courses</h1>
+    <h1 class="text-center">List of Courses</h1>
     <table class="table">
         <thead class="table-primary">
             <tr>
                 <td>Name</td>
                  <td>Author</td>
                  <td>Name</td>
-                 <td>Operations</td>
+                <td>Price</td>
+                <td>Operations</td>
             </tr>
         </thead>
         <tbody class="table-info">
@@ -24,7 +25,15 @@
                     <td>@item.Name</td>
                     <td>@item.Author</td>
                     <td>@item.Description</td>
-                    <td><a class="nav-link" asp-action="EditCourse" asp-controller="home" asp-route-id="@item.Id">Edit</a></td>
+                    <td class="text-center">@item.Price</td>
+                    <td>
+                        <a class="nav-link" asp-action="DetailCourse" asp-controller="course" asp-route-id="@item.Id">Detail</a>
+                        <a class="nav-link" asp-action="EditCourse" asp-controller="course" asp-route-id="@item.Id">Edit</a>
+                        <form method="post" asp-action="DeleteCourse" asp-controller="course" asp-route-id="@item.Id">
+                            <input type="submit" class="btn-link" value="Delete"/>
+                        </form>
+                        
+                    </td>
                 </tr>
             }
         </tbody>
