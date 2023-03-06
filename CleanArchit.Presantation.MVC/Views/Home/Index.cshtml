@@ -1,5 +1,4 @@
-﻿@using CleanArchit.Application.ViewModels;
-@model ViewCourseModel
+﻿@model IndexViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -11,11 +10,11 @@
     <table class="table">
         <thead class="table-primary">
             <tr>
-                <td>Name</td>
-                 <td>Author</td>
-                 <td>Name</td>
-                <td>Price</td>
-                <td>Operations</td>
+                <th><a asp-action="Index" asp-route-sortState="@ViewData["NameSort"]">Name</a></th>
+                <th><a asp-action="Index" asp-route-sortState="@ViewData["AuthorSort"]">Author</a></th>
+                <th>Descriptions</th>
+                <th><a asp-action="Index" asp-route-sortState="@ViewData["PriceSort"]">Price</a></th>
+                <th>Operations</th>
             </tr>
         </thead>
         <tbody class="table-info">
