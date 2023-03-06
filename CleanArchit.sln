@@ -15,15 +15,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IoC", "IoC", "{A4B95955-63A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{68AF689A-3249-4CC9-8CF1-F82F79B84BB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchit.Application", "CleanArchit.Application\CleanArchit.Application.csproj", "{ECAA6145-F722-4FF1-A9FD-7DFCC7CB3743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchit.Application", "CleanArchit.Application\CleanArchit.Application.csproj", "{ECAA6145-F722-4FF1-A9FD-7DFCC7CB3743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchit.Domain", "CleanArchit.Domain\CleanArchit.Domain.csproj", "{B92BD0D6-75A0-494A-BCC8-C8CF2145C75D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchit.Domain", "CleanArchit.Domain\CleanArchit.Domain.csproj", "{B92BD0D6-75A0-494A-BCC8-C8CF2145C75D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchit.Infrastructure.Data", "CleanArchit.Infrastructure.Data\CleanArchit.Infrastructure.Data.csproj", "{2A94771F-B1E0-48FA-8E9E-54FE0D50C227}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchit.Infrastructure.Data", "CleanArchit.Infrastructure.Data\CleanArchit.Infrastructure.Data.csproj", "{2A94771F-B1E0-48FA-8E9E-54FE0D50C227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchit.Infrastructure.IoC", "CleanArchit.Infrastructure.IoC\CleanArchit.Infrastructure.IoC.csproj", "{BAC025C5-C600-47B4-B6E4-401FF8FB2EA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchit.Infrastructure.IoC", "CleanArchit.Infrastructure.IoC\CleanArchit.Infrastructure.IoC.csproj", "{BAC025C5-C600-47B4-B6E4-401FF8FB2EA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchit.Presantation.MVC", "CleanArchit.Presantation.MVC\CleanArchit.Presantation.MVC.csproj", "{F9CEE14B-FEDC-4662-952B-783342E61A45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArchit.Presantation.MVC", "CleanArchit.Presantation.MVC\CleanArchit.Presantation.MVC.csproj", "{F9CEE14B-FEDC-4662-952B-783342E61A45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bus", "Bus", "{48322B9B-F825-4F48-A31E-AA139AACB506}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{48C71667-216E-4AF4-AD39-D9D8B6E05C3C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,7 @@ Global
 		{2A94771F-B1E0-48FA-8E9E-54FE0D50C227} = {58FD46DE-6D05-4935-83F9-069AA872FB6D}
 		{BAC025C5-C600-47B4-B6E4-401FF8FB2EA0} = {A4B95955-63AC-4099-B228-8E7C90B8E83A}
 		{F9CEE14B-FEDC-4662-952B-783342E61A45} = {68AF689A-3249-4CC9-8CF1-F82F79B84BB3}
+		{48322B9B-F825-4F48-A31E-AA139AACB506} = {15FD99FD-65AC-4B02-BB8C-33124ADA7927}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F60E611A-6D2D-4CC8-A6BC-AF71E41A277C}
