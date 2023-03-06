@@ -1,7 +1,10 @@
 ﻿using CleanArchit.Application.Interfases;
+using CleanArchit.Application.ViewModels;
 using CleanArchit.Domain.Models;
 using CleanArchit.Presantation.MVC.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.Data.SqlClient.DataClassification;
 using System.Collections;
@@ -11,22 +14,25 @@ namespace CleanArchit.Presantation.MVC.Controllers
 {
 
 
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICourseService _courseService;
-      
+
 
         public HomeController(ILogger<HomeController> logger, ICourseService courseService)
         {
-            _courseService= courseService;
+            _courseService = courseService;
             _logger = logger;
         }
 
-     
+
         public IActionResult Index()
         {
-            return View(_courseService.GetViewCourse());
+            ViewCourseModel viewCourse = new ViewCourseModel();
+            viewCourse = _courseService.GetViewCourse();
+            return View(viewCourse) ;
         }
 
         [HttpGet]
@@ -36,11 +42,33 @@ namespace CleanArchit.Presantation.MVC.Controllers
         }
 
         [HttpPost]
-        public  IActionResult CreateCourse(Course course)
+        public IActionResult CreateCourse(Course course)
         {
-            _courseService.Add(course);
-            _courseService.Save();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _courseService.Add(course);
+                _courseService.Save();
+                return RedirectToAction("Index");
+            }else 
+            {
+                string textarea = String.Empty;
+                foreach (var item in ModelState) 
+                {
+                    if (item.Value.ValidationState==ModelValidationState.Invalid) 
+                    {
+                        textarea += item.Key;
+                        foreach (var erorr in item.Value.Errors) 
+                        {
+                            textarea += "---";
+                            textarea += erorr.ErrorMessage;
+                        }
+                    }
+
+                }
+                return BadRequest(textarea);
+            }
+
+
         }
 
         [HttpGet]
@@ -52,13 +80,14 @@ namespace CleanArchit.Presantation.MVC.Controllers
                 if (course != null)
                 {
                     return View(course);
-                }else return NotFound();
+                }
+                else return NotFound();
             }
             else return NotFound();
         }
 
         [HttpPost]
-        public IActionResult EditCourse(Course course) 
+        public IActionResult EditCourse(Course course)
         {
             if (course != null)
             {
@@ -67,7 +96,7 @@ namespace CleanArchit.Presantation.MVC.Controllers
                     _courseService.Save();
                     return RedirectToAction("Index");
                 }
-                else return NotFound();  
+                else return NotFound();
             }
             else return NotFound();
         }

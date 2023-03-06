@@ -7,7 +7,7 @@ namespace CleanArchit.Infrastructure.Data.Context
     {
         public CourseDBContext(DbContextOptions<CourseDBContext> options) : base(options)
         {
-           Database.EnsureCreated();
+            
         }
         public DbSet<Course> Courses { get; set; }
     }
