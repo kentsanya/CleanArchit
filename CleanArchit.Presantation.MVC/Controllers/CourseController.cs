@@ -1,10 +1,13 @@
 ﻿using CleanArchit.Application.Interfases;
 using CleanArchit.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace CleanArchit.Presantation.MVC.Controllers
 {
+
+    [Authorize]
     public class CourseController : Controller
     {
         private readonly ILogger<HomeController> _logger;

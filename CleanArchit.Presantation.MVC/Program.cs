@@ -23,6 +23,9 @@ namespace CleanArchit.Presantation.MVC
 
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            
+            builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+            builder.Services.AddAuthorization();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

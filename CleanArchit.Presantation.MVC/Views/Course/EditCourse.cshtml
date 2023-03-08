@@ -7,7 +7,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div class="container-fluid">
-    @using (Html.BeginForm("EditCourse", "Home", FormMethod.Post))
+    @using (Html.BeginForm("EditCourse", "Course", FormMethod.Post))
     {
         <div class="row">@Html.ValidationSummary()</div>
         <div class="row">
