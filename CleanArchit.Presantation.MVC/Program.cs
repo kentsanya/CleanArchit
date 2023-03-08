@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CleanArchit.Infrastructure.Data.Context;
 using CleanArchit.Infrastructure.IoC;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CleanArchit.Presantation.MVC
 {
@@ -23,8 +24,16 @@ namespace CleanArchit.Presantation.MVC
 
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-            
-            builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+
+            builder.Services.AddAuthentication("Bearer").AddJwtBearer(optisons => 
+            {
+                optisons.TokenValidationParameters=new TokenValidationParameters 
+                {
+                    ValidateIssuer=true,
+
+
+                }
+            });
             builder.Services.AddAuthorization();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
