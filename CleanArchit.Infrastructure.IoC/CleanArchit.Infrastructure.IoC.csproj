@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -14,6 +14,7 @@
     <ProjectReference Include="..\CleanArchit.Application\CleanArchit.Application.csproj" />
     <ProjectReference Include="..\CleanArchit.Domain\CleanArchit.Domain.csproj" />
     <ProjectReference Include="..\CleanArchit.Infrastructure.Data\CleanArchit.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Infrastructure.Bus\CleanArchit.Infrastructure.Bus.csproj" />
   </ItemGroup>
 
 </Project>

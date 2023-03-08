@@ -20,9 +20,11 @@ namespace CleanArchit.Domain.Models
         [Required]
         public string Author { get; set; }
 
-        [Range(1,1000000)]
+        [Range(1, 1000000)]
         public decimal Price { get; set; }
-        
+
+        public string ImageUrl { get; set; }
+
 
     }
 }
