@@ -59,7 +59,7 @@ namespace CleanArchit.Presantation.MVC.Controllers
 
             IndexViewModel indexViewModel = new IndexViewModel(items,
                 new SortViewModel(sortState),
-                new FilterViewModel(items, 0, name),
+                new FilterViewModel(items, name),
                 new PaginationViewModel(count, page, pageSizeElement));
               
             return View(indexViewModel) ;

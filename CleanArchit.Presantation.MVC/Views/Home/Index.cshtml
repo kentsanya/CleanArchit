@@ -6,14 +6,19 @@
 
 
 <div class="container-fluid">
+    <form method="get">
+        <label>Name of Course</label>
+        <input type="text" name="name" value="@Model.Filter.SelectedCourse"/>
+        <input type="submit" value="Filter"/>
+    </form>
     <h1 class="text-center">List of Courses</h1>
     <table class="table">
         <thead class="table-primary">
             <tr>
-                <th><a asp-action="Index" asp-route-sortState="@ViewData["NameSort"]">Name</a></th>
-                <th><a asp-action="Index" asp-route-sortState="@ViewData["AuthorSort"]">Author</a></th>
+                <th><a asp-action="Index" asp-route-sortState="@Model.Sort.NameSort" asp-route-name="@Model.Filter.SelectedCourse">Name</a></th>
+                <th><a asp-action="Index" asp-route-sortState="@Model.Sort.AuthorSort" asp-route-name="@Model.Filter.SelectedCourse">Author</a></th>
                 <th>Descriptions</th>
-                <th><a asp-action="Index" asp-route-sortState="@ViewData["PriceSort"]">Price</a></th>
+                <th><a asp-action="Index" asp-route-sortState="@Model.Sort.PriceSort" asp-route-name="@Model.Filter.SelectedCourse">Price</a></th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -37,5 +42,26 @@
             }
         </tbody>
     </table>
-   
+    <div class="pagination">
+        @if (Model.Pagination.HasPreviosPage)
+        {
+
+             <a asp-action="Index" asp-controller="Home" class="page-link"
+                    asp-route-page="@(Model.Pagination.PageNumber-1)"
+                   asp-route-name="@Model.Filter.SelectedCourse"
+                   asp-route-sortstate="@Model.Sort.Current">Prew</a>
+
+        }
+    @if (Model.Pagination.HasNextPage)
+    {
+       
+        <a asp-action="Index" asp-controller="Home" class="page-link"
+
+            asp-route-page="@(Model.Pagination.PageNumber+1)"
+            asp-route-name="@Model.Filter.SelectedCourse"
+            asp-route-sortstate="@Model.Sort.Current">Next</a>
+
+    }
+    </div>
+
 </div>
