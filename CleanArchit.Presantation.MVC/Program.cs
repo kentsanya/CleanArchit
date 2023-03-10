@@ -4,6 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using CleanArchit.Infrastructure.Data.Context;
 using CleanArchit.Infrastructure.IoC;
 using Microsoft.IdentityModel.Tokens;
+using CleanArchit.Presantation.MVC.AuthithicationOptions;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Hosting;
+using System.Reflection;
 
 namespace CleanArchit.Presantation.MVC
 {
@@ -24,15 +33,12 @@ namespace CleanArchit.Presantation.MVC
 
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession();
 
-            builder.Services.AddAuthentication("Bearer").AddJwtBearer(optisons => 
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(optisons =>
             {
-                optisons.TokenValidationParameters=new TokenValidationParameters 
-                {
-                    ValidateIssuer=true,
-
-
-                }
+                optisons.LoginPath = "/login";
             });
             builder.Services.AddAuthorization();
 
@@ -40,7 +46,7 @@ namespace CleanArchit.Presantation.MVC
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             RegisterServices(builder.Services);
             var app = builder.Build();
 
@@ -58,7 +64,7 @@ namespace CleanArchit.Presantation.MVC
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthentication();
@@ -69,6 +75,8 @@ namespace CleanArchit.Presantation.MVC
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.MapRazorPages();
+
+      
 
             app.Run();
         }

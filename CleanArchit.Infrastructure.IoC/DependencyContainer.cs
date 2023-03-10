@@ -21,14 +21,14 @@ namespace CleanArchit.Infrastructure.IoC
 
             //Infrastructure Data
             services.AddScoped<ICourseRepository, CourseRepository>();
-           // services.AddScoped <CourseDBContext> ();
+         
 
             //MediatoR
 
-          //  services.AddScoped<IMediatorHandler, InMemoryBus>();
+            services.AddScoped<IMediatorHandler, InMemoryBus>();
 
             //Domain Handler
-           // services.AddScoped<IRequestHandler<CreateCourseCommand, bool>, CourseCommandHandler>();
+            services.AddScoped<IRequestHandler<CreateCourseCommand, bool>, CourseCommandHandler>();
         }
     }
 }

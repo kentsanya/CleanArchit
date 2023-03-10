@@ -2,11 +2,6 @@
 using CleanArchit.Domain.Intarfaces;
 using CleanArchit.Domain.Models;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchit.Domain.CommandHandlers
 {
@@ -25,10 +20,13 @@ namespace CleanArchit.Domain.CommandHandlers
                 var course = new Course()
                 {
                     Name = request.Name,
+                    Price=request.Price,
+                    Author=request.Author,
                     Description = request.Description,
                     ImageUrl = request.ImageUrl,
                 };
                 _courseRepository.Add(course);
+                _courseRepository.Save();
             }
             catch
             {

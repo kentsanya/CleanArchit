@@ -1,5 +1,7 @@
 ﻿using CleanArchit.Application.Interfases;
 using CleanArchit.Application.ViewModels;
+using CleanArchit.Domain.Commands;
+using CleanArchit.Domain.Core.Bus;
 using CleanArchit.Domain.Intarfaces;
 using CleanArchit.Domain.Models;
 
@@ -8,14 +10,23 @@ namespace CleanArchit.Application.Services
     public class CourseService : ICourseService
     {
         private ICourseRepository _courseRepository;
-        public CourseService(ICourseRepository courseRepository) 
+        private IMediatorHandler _bus;
+        public CourseService(ICourseRepository courseRepository, IMediatorHandler mediator) 
         {
+            _bus= mediator;
             _courseRepository = courseRepository;
         }
 
         public void Add(Course entity)
         {
-            _courseRepository.Add(entity);
+            var createCourseCommand = new CreateCourseCommand(
+               entity.Name,
+               entity.Description,
+               entity.Author,
+               entity.Price,
+               entity.ImageUrl
+             );
+            _bus.SendCommand(createCourseCommand);
         }
 
         public Course? FindById(int id)

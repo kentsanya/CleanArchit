@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using CleanArchit.Domain.Core.Bus;
 using CleanArchit.Domain.Core.Commands;
 using MediatR;

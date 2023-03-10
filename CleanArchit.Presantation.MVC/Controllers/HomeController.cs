@@ -1,15 +1,22 @@
 ﻿using CleanArchit.Application.Interfases;
 using CleanArchit.Application.ViewModels;
 using CleanArchit.Domain.Models;
+using CleanArchit.Presantation.MVC.AuthithicationOptions;
 using CleanArchit.Presantation.MVC.Models;
 using CleanArchit.Presantation.MVC.Models.Operations;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.Data.SqlClient.DataClassification;
+using Microsoft.Extensions.Primitives;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections;
 using System.Diagnostics;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace CleanArchit.Presantation.MVC.Controllers
 {
@@ -20,7 +27,7 @@ namespace CleanArchit.Presantation.MVC.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICourseService _courseService;
-
+    
 
         public HomeController(ILogger<HomeController> logger, ICourseService courseService)
         {
@@ -65,8 +72,26 @@ namespace CleanArchit.Presantation.MVC.Controllers
             return View(indexViewModel) ;
         }
 
-      
+        [HttpGet]
+        public IActionResult Login() 
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginView login)
+        {
+            if (login != null) 
+            {
+                var claims=new List<Claim> 
+                {
+                    new Claim(ClaimTypes.Name, login.Name),
+                };
+                ClaimsIdentity claimsIdentity=new ClaimsIdentity(claims, "Cookies");
 
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+            }
+            return RedirectToAction("CreateCourse","Course");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

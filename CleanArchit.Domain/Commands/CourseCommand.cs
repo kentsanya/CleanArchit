@@ -11,6 +11,10 @@ namespace CleanArchit.Domain.Commands
     {
         public string Name { get; protected set; }
         public string Description { get; protected set; }
+
+        public string Author { get; protected set; }
+        public decimal Price { get; protected set; }
+
         public string ImageUrl { get; protected set; }
     }
 }
