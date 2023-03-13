@@ -1,11 +1,9 @@
-using CleanArchit.Infrastructure.IoC;
-using CleanArchit.Infrastructure.Data;
-using Microsoft.Data.SqlClient;
-using Swashbuckle.AspNetCore.Swagger;
 using CleanArchit.Infrastructure.Data.Context;
+using CleanArchit.Infrastructure.IoC;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
-namespace CleanArch.API
+namespace CleanArch.WebApi
 {
     public class Program
     {
@@ -15,25 +13,27 @@ namespace CleanArch.API
 
             // Add services to the container.
 
+            builder.Services.AddControllers();
             var connectionStringDbCourse = builder.Configuration.GetConnectionString("CourseConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CourseDBContext>(options =>
                 options.UseSqlServer(connectionStringDbCourse));
-            builder.Services.AddControllers();
-            builder.Services.AddSwaggerGen(c=>c.SwaggerDoc("UniversityAPI", new Microsoft.OpenApi.Models.OpenApiInfo() 
-                                                            { Title="Universaty API", Version="V1"}));
 
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            RegisterServices(builder.Services);
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-
-            app.UseHttpsRedirection();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
             app.UseAuthorization();
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "University API V1");
-            });
+
 
             app.MapControllers();
 
