@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CleanArchit.Infrastructure.Bus": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:54814;http://localhost:54815"
+    }
+  }
+}

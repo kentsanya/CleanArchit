@@ -9,6 +9,7 @@ namespace CleanArchit.Application.Services
 {
     public class CourseService : ICourseService
     {
+        //Polymorf connection
         private ICourseRepository _courseRepository;
         private IMediatorHandler _bus;
         public CourseService(ICourseRepository courseRepository, IMediatorHandler mediator) 
@@ -41,7 +42,6 @@ namespace CleanArchit.Application.Services
                 Courses = _courseRepository.GetAll()
             };
         }
-
         public bool Remove(Course entity)
         {
              return  _courseRepository.Remove(entity);

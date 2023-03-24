@@ -8,7 +8,6 @@ using CleanArchit.Infrastructure.Bus;
 using MediatR;
 using CleanArchit.Domain.Commands;
 using CleanArchit.Domain.CommandHandlers;
-using CleanArchit.Infrastructure.Data.Context;
 
 namespace CleanArchit.Infrastructure.IoC
 {

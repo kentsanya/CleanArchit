@@ -3,15 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using CleanArchit.Infrastructure.Data.Context;
 using CleanArchit.Infrastructure.IoC;
-using Microsoft.IdentityModel.Tokens;
-using CleanArchit.Presantation.MVC.AuthithicationOptions;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Hosting;
 using System.Reflection;
 
 namespace CleanArchit.Presantation.MVC
@@ -36,10 +27,7 @@ namespace CleanArchit.Presantation.MVC
             builder.Services.AddDistributedMemoryCache();
             builder.Services.AddSession();
 
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(optisons =>
-            {
-                optisons.LoginPath = "/login";
-            });
+            builder.Services.AddAuthentication();
             builder.Services.AddAuthorization();
 
             builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

@@ -24,6 +24,8 @@ namespace CleanArchit.Presantation.MVC.Controllers
         [HttpGet]
         public IActionResult DetailCourse(int? id)
         {
+            
+             
             if (id > 0)
             {
                 var course = _courseService.FindById(id.Value);
@@ -42,11 +44,18 @@ namespace CleanArchit.Presantation.MVC.Controllers
         }
 
 
+
         [HttpPost]
         public IActionResult CreateCourse(Course course)
         {
             if (ModelState.IsValid)
             {
+                List<Student> students = new List<Student>()
+                {
+                    new Student (){ Name="Ivan"},
+                    new Student() {Name="Vova"}
+                };
+                course.Students.AddRange(students);
                 _courseService.Add(course);
                 _courseService.Save();
                 return RedirectToAction("Index", "Home");

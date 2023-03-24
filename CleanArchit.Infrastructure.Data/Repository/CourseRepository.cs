@@ -1,6 +1,8 @@
 ﻿using CleanArchit.Domain.Intarfaces;
 using CleanArchit.Domain.Models;
 using CleanArchit.Infrastructure.Data.Context;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchit.Infrastructure.Data.Repository
 {
@@ -31,7 +33,9 @@ namespace CleanArchit.Infrastructure.Data.Repository
 
         public IEnumerable<Course> GetAll()
         {
-            return _context.Courses;
+        
+            SqlParameter parameter = new SqlParameter("@name", "Net");
+            return _context.Courses.FromSqlRaw("GetNameCourse @name",parameter).ToList();
         }
 
         public bool Remove(Course entity)

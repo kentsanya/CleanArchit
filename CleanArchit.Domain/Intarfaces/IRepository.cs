@@ -17,6 +17,8 @@ namespace CleanArchit.Domain.Intarfaces
 
         public bool UpDate(T entity);
 
+
+        //ToDO DBContext
         public void Save();
         public  Task SaveAsync();  
 

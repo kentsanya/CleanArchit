@@ -1,14 +1,9 @@
 ﻿using CleanArchit.Application.Interfases;
-using CleanArchit.Application.ViewModels;
-using CleanArchit.Domain.Models;
-using CleanArchit.Presantation.MVC.AuthithicationOptions;
 using CleanArchit.Presantation.MVC.Models;
 using CleanArchit.Presantation.MVC.Models.Operations;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -69,11 +64,13 @@ namespace CleanArchit.Presantation.MVC.Controllers
         [HttpGet]
         public IActionResult Login() 
         {
+            
             return View();
         }
         [HttpPost]
         public async Task<IActionResult> Login(LoginView login)
         {
+            
             if (login != null) 
             {
                 var claims=new List<Claim> 
